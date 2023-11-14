@@ -16,5 +16,8 @@ or just
 cargo run
 ```
 
-# Giving the arguments:
+### Giving the arguments:
 After running the program you will see
+```
+Enter password lenght(max i16):
+```
