@@ -1,23 +1,36 @@
 use rand::Rng; // 0.8.5
+#[allow(unused_imports)]
 use std::io;
+use clap::Parser;
 
-fn main() {
-    println!("Enter password lenght(max i16):");
-
-    let mut input = String::new();
-    io::stdin().read_line(&mut input).expect("Failed to read the input");
-    let size: i16 = input.trim().parse().expect("Invalid input");
-
-    println!("Customize the password.\nType 1 to include lowercase letters\nType 2 to include uppercase letters\nType 3 to include numbers\nType 4 to include special characters\nUsage: 124 includes everything except numbers");
-    // i know it it unreadable now but just unwrap it by the \n tags.
-
-    let mut customize = String::new();
-    io::stdin().read_line(&mut customize).expect("Failed to read the input");
-
-    println!("{}" ,gen_pass(size, customize));
+#[derive(Parser, Debug)]
+#[clap(about, version, author)] // you can discard this if you want.
+struct Value {
+   /// First number to add
+   #[clap(short = 's', long = "size")]
+   size: i32,
+   /// Second number to add
+   #[clap(short = 't', long = "type")]
+   pass_type: i32,
 }
 
-fn gen_pass(len: i16, customize: String) -> String {
+
+
+
+fn main() {
+
+    let value = Value::parse();
+
+    let size = value.size;
+    let pass_type = value.pass_type;
+    
+    println!("Password: {}", gen_pass(size, pass_type.to_string()));
+
+    
+}
+
+#[allow(dead_code)]
+fn gen_pass(len: i32, customize: String) -> String {
     let mut password_chars: Vec<char> = Vec::new();
     for character in customize.chars() {
         match character {
