@@ -1,6 +1,4 @@
 use rand::Rng; // 0.8.5
-#[allow(unused_imports)]
-use std::io;
 use clap::Parser;
 
 #[derive(Parser, Debug)]
