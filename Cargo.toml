@@ -6,7 +6,7 @@ authors = ["Ersan Demircan"]
 description = "A simple password generator"
 readme = "README.md"
 documentation = "https://github.com/RoaringCow/passgen"
-
+license-file = "LICENSE"
 
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
